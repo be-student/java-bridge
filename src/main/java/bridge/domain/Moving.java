@@ -19,4 +19,8 @@ public enum Moving {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("U,D 만 입력 가능합니다"));
     }
+
+    public String getMove() {
+        return move;
+    }
 }

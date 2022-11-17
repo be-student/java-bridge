@@ -10,6 +10,13 @@ public enum GameSuccessCondition {
         this.gameCondition = gameCondition;
     }
 
+    public static GameSuccessCondition from(boolean hasDifferent) {
+        if (hasDifferent == false) {
+            return GameSuccessCondition.FAILURE;
+        }
+        return GameSuccessCondition.SUCCESS;
+    }
+
     public String gameResultMessage() {
         return this.gameCondition;
     }
