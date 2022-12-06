@@ -21,6 +21,13 @@ public enum BridgePosition {
                 .orElseThrow(() -> new IllegalArgumentException("코드는 1 또는 0만 가능합니다"));
     }
 
+    public static BridgePosition createWithPosition(String position) {
+        return Arrays.stream(BridgePosition.values())
+                .filter(it -> it.position.equals(position))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("코드는 1 또는 0만 가능합니다"));
+    }
+
     public String getPosition() {
         return position;
     }
