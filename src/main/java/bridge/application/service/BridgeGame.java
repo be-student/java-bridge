@@ -1,4 +1,4 @@
-package bridge.application.port.service;
+package bridge.application.service;
 
 import bridge.BridgeMaker;
 import bridge.application.port.in.BridgeGameUseCase;

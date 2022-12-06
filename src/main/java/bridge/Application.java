@@ -3,7 +3,7 @@ package bridge;
 import bridge.adapter.in.client.BridgeGameClient;
 import bridge.adapter.in.client.InputView;
 import bridge.adapter.in.client.OutputView;
-import bridge.application.port.service.BridgeGame;
+import bridge.application.service.BridgeGame;
 
 public class Application {
 
