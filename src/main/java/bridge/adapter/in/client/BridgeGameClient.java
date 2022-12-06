@@ -1,6 +1,7 @@
 package bridge.adapter.in.client;
 
 import bridge.application.port.in.BridgeGameUseCase;
+import java.util.function.Supplier;
 
 public class BridgeGameClient {
 
@@ -19,5 +20,15 @@ public class BridgeGameClient {
     }
 
     public void playBridgeGame() {
+    }
+
+
+    private <T> T repeat(Supplier<T> inputReader) {
+        try {
+            return inputReader.get();
+        } catch (IllegalArgumentException e) {
+            outputView.printError(e.getMessage());
+            return repeat(inputReader);
+        }
     }
 }
