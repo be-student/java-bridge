@@ -1,5 +1,6 @@
 package bridge.application.port.service;
 
+import bridge.BridgeMaker;
 import bridge.application.port.in.BridgeGameUseCase;
 import bridge.application.port.in.CreateBridgeCommand;
 import bridge.application.port.in.MoveCommand;
@@ -10,10 +11,16 @@ import java.util.List;
  */
 public final class BridgeGame implements BridgeGameUseCase {
 
+    private final BridgeMaker bridgeMaker;
+
+    public BridgeGame(BridgeMaker bridgeMaker) {
+        this.bridgeMaker = bridgeMaker;
+    }
+
     @Override
     public void createBridge(CreateBridgeCommand createBridgeCommand) {
     }
-    
+
 
     /**
      * 사용자가 칸을 이동할 때 사용하는 메서드
