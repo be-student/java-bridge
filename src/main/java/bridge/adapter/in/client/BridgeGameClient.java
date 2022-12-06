@@ -1,7 +1,7 @@
 package bridge.adapter.in.client;
 
 import bridge.application.port.in.BridgeGameUseCase;
-import java.util.function.Supplier;
+import bridge.application.port.in.CreateBridgeCommand;
 
 public class BridgeGameClient {
 
@@ -21,9 +21,15 @@ public class BridgeGameClient {
 
     public void playBridgeGame() {
         printStartMessage();
-//        setUpBridgeGame();
+        repeat(this::setUpBridgeGame);
 //        play();
 //        printResult();
+    }
+
+
+    private void setUpBridgeGame() {
+        CreateBridgeCommand createBridgeCommand = inputView.readBridgeSize();
+        bridgeGameUseCase.createBridge(createBridgeCommand);
     }
 
     private void printStartMessage() {
@@ -31,12 +37,12 @@ public class BridgeGameClient {
     }
 
 
-    private <T> T repeat(Supplier<T> inputReader) {
+    private <T> void repeat(Runnable inputReader) {
         try {
-            return inputReader.get();
+            inputReader.run();
         } catch (IllegalArgumentException e) {
             outputView.printError(e.getMessage());
-            return repeat(inputReader);
+            repeat(inputReader);
         }
     }
 }

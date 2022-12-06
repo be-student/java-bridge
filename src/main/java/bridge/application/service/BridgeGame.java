@@ -4,6 +4,7 @@ import bridge.BridgeMaker;
 import bridge.application.port.in.BridgeGameUseCase;
 import bridge.application.port.in.CreateBridgeCommand;
 import bridge.application.port.in.MoveCommand;
+import bridge.domain.Bridge;
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ import java.util.List;
 public final class BridgeGame implements BridgeGameUseCase {
 
     private final BridgeMaker bridgeMaker;
+    private Bridge bridge;
 
     public BridgeGame(BridgeMaker bridgeMaker) {
         this.bridgeMaker = bridgeMaker;
@@ -19,7 +21,8 @@ public final class BridgeGame implements BridgeGameUseCase {
 
     @Override
     public void createBridge(CreateBridgeCommand createBridgeCommand) {
-        createBridgeCommand.getBridgeLength();
+        int bridgeLength = createBridgeCommand.getBridgeLength();
+        bridge = new Bridge(bridgeMaker.makeBridge(bridgeLength));
     }
 
 
