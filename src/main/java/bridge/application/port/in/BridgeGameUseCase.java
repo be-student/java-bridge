@@ -11,4 +11,10 @@ public interface BridgeGameUseCase {
     void retry();
 
     List<List<String>> result();
+
+    int triedCount();
+
+    boolean isCleared();
+
+    boolean isFinished();
 }
