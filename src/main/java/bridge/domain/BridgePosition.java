@@ -9,9 +9,9 @@ public enum BridgePosition {
     private final int generatedCode;
     private final String position;
 
-    BridgePosition(int generatedCode, String text) {
+    BridgePosition(int generatedCode, String position) {
         this.generatedCode = generatedCode;
-        position = text;
+        this.position = position;
     }
 
     public static BridgePosition createWithCode(int code) {
