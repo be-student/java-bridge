@@ -19,6 +19,7 @@ public final class BridgeGame implements BridgeGameUseCase {
 
     @Override
     public void createBridge(CreateBridgeCommand createBridgeCommand) {
+        createBridgeCommand.getBridgeLength();
     }
 
 
