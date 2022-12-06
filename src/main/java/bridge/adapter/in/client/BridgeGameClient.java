@@ -20,6 +20,14 @@ public class BridgeGameClient {
     }
 
     public void playBridgeGame() {
+        printStartMessage();
+//        setUpBridgeGame();
+//        play();
+//        printResult();
+    }
+
+    private void printStartMessage() {
+        outputView.printStartMessage();
     }
 
 
