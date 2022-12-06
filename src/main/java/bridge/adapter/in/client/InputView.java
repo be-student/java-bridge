@@ -1,4 +1,4 @@
-package bridge;
+package bridge.adapter.in.client;
 
 /**
  * 사용자로부터 입력을 받는 역할을 한다.
