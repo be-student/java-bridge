@@ -45,4 +45,13 @@ public class BridgeGameClient {
             repeat(inputReader);
         }
     }
+
+    private <T> T repeat(Supplier<T> inputReader) {
+        try {
+            return inputReader.get();
+        } catch (IllegalArgumentException e) {
+            outputView.printError(e.getMessage());
+            return repeat(inputReader);
+        }
+    }
 }
