@@ -37,7 +37,7 @@ public class BridgeGameClient {
     }
 
 
-    private <T> void repeat(Runnable inputReader) {
+    private void repeat(Runnable inputReader) {
         try {
             inputReader.run();
         } catch (IllegalArgumentException e) {
