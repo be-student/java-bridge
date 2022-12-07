@@ -28,8 +28,7 @@ public class History {
     }
 
     public void move(BridgePosition nextPosition, Bridge bridge) {
-        int length = history.get(0).size();
-        put(nextPosition, bridge.isEqualAtIndex(length, nextPosition));
+        put(nextPosition, bridge.isEqualAtIndex(historySize(), nextPosition));
     }
 
     private void put(BridgePosition nextPosition, boolean isSuccess) {
@@ -52,7 +51,7 @@ public class History {
     }
 
     public boolean isFinished(Bridge target) {
-        if (history.get(0).size() == target.size()) {
+        if (historySize() == target.size()) {
             return true;
         }
         return history.stream()
@@ -60,10 +59,14 @@ public class History {
     }
 
     public boolean isCleared(Bridge target) {
-        if (history.get(0).size() != target.size()) {
+        if (historySize() != target.size()) {
             return false;
         }
         return history.stream()
                 .noneMatch(it -> it.contains("X"));
+    }
+
+    private int historySize() {
+        return history.size();
     }
 }
