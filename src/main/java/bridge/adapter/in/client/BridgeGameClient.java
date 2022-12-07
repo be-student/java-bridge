@@ -2,6 +2,9 @@ package bridge.adapter.in.client;
 
 import bridge.application.port.in.BridgeGameUseCase;
 import bridge.application.port.in.CreateBridgeCommand;
+import bridge.application.port.in.MoveCommand;
+import java.util.List;
+import java.util.function.Supplier;
 
 public class BridgeGameClient {
 
@@ -22,8 +25,26 @@ public class BridgeGameClient {
     public void playBridgeGame() {
         printStartMessage();
         repeat(this::setUpBridgeGame);
-//        play();
-//        printResult();
+        GameCommand command = GameCommand.RETRY;
+        while (command != GameCommand.QUIT) {
+            play();
+            command = askRetry();
+        }
+        printResult();
+    }
+
+    private void printResult() {
+        List<List<String>> result = bridgeGameUseCase.result();
+        boolean cleared = bridgeGameUseCase.isCleared();
+        int triedCount = bridgeGameUseCase.triedCount();
+        outputView.printResult(new PrintResultCommand(result, cleared, triedCount));
+    }
+
+    private GameCommand askRetry() {
+        if (bridgeGameUseCase.isCleared()) {
+            return GameCommand.QUIT;
+        }
+        return repeat(inputView::readGameCommand);
     }
 
 
@@ -36,6 +57,14 @@ public class BridgeGameClient {
         outputView.printStartMessage();
     }
 
+    private void play() {
+        while (!bridgeGameUseCase.isFinished()) {
+            MoveCommand moveCommand = repeat(inputView::readMoving);
+            bridgeGameUseCase.move(moveCommand);
+            List<List<String>> result = bridgeGameUseCase.result();
+            outputView.printMap(result);
+        }
+    }
 
     private void repeat(Runnable inputReader) {
         try {
