@@ -31,4 +31,8 @@ public class Bridge {
     private boolean isInRange(int size) {
         return BRIDGE_MIN_LENGTH <= size && size <= BRIDGE_MAX_LENGTH;
     }
+
+    public boolean isEqualAtIndex(int index, BridgePosition position) {
+        return bridgePositions.get(index).equals(position);
+    }
 }
