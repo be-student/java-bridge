@@ -27,6 +27,7 @@ public class BridgeGameClient {
         repeat(this::setUpBridgeGame);
         GameCommand command = GameCommand.RETRY;
         while (command != GameCommand.QUIT) {
+            bridgeGameUseCase.retry();
             play();
             command = askRetry();
         }
