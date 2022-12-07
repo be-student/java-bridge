@@ -31,4 +31,8 @@ public enum BridgePosition {
     public String getPosition() {
         return position;
     }
+
+    public int toCode() {
+        return generatedCode;
+    }
 }
