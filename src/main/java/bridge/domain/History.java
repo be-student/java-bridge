@@ -50,4 +50,20 @@ public class History {
         result.get(1).addAll(history.get(1));
         return result;
     }
+
+    public boolean isFinished(Bridge target) {
+        if (history.get(0).size() == target.size()) {
+            return true;
+        }
+        return history.stream()
+                .anyMatch(it -> it.contains("X"));
+    }
+
+    public boolean isCleared(Bridge target) {
+        if (history.get(0).size() != target.size()) {
+            return false;
+        }
+        return history.stream()
+                .noneMatch(it -> it.contains("X"));
+    }
 }

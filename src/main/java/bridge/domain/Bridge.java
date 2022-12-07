@@ -35,4 +35,8 @@ public class Bridge {
     public boolean isEqualAtIndex(int index, BridgePosition position) {
         return bridgePositions.get(index).equals(position);
     }
+
+    public int size() {
+        return bridgePositions.size();
+    }
 }
