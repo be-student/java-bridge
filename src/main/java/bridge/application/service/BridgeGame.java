@@ -5,6 +5,8 @@ import bridge.application.port.in.BridgeGameUseCase;
 import bridge.application.port.in.CreateBridgeCommand;
 import bridge.application.port.in.MoveCommand;
 import bridge.domain.Bridge;
+import bridge.domain.BridgePosition;
+import bridge.domain.History;
 import java.util.List;
 
 /**
@@ -13,10 +15,12 @@ import java.util.List;
 public final class BridgeGame implements BridgeGameUseCase {
 
     private final BridgeMaker bridgeMaker;
+    private final History history;
     private Bridge bridge;
 
     public BridgeGame(BridgeMaker bridgeMaker) {
         this.bridgeMaker = bridgeMaker;
+        history = new History();
     }
 
     @Override
@@ -33,6 +37,8 @@ public final class BridgeGame implements BridgeGameUseCase {
      */
     @Override
     public void move(MoveCommand moveCommand) {
+        BridgePosition nextPosition = BridgePosition.createWithPosition(moveCommand.getMove());
+        history.move(nextPosition, bridge);
     }
 
     /**
@@ -42,10 +48,26 @@ public final class BridgeGame implements BridgeGameUseCase {
      */
     @Override
     public void retry() {
+        history.retry();
     }
 
     @Override
     public List<List<String>> result() {
-        return null;
+        return history.toDto();
+    }
+
+    @Override
+    public int triedCount() {
+        return history.getTriedCount();
+    }
+
+    @Override
+    public boolean isCleared() {
+        return history.isCleared(bridge);
+    }
+
+    @Override
+    public boolean isFinished() {
+        return history.isFinished(bridge);
     }
 }
