@@ -14,4 +14,8 @@ public class MoveCommand {
             throw new IllegalArgumentException("입력에 null 이 오면 안됩니다");
         }
     }
+
+    public String getMove() {
+        return move;
+    }
 }
