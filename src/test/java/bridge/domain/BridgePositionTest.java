@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("BridgePosition 클래스")
 @DisplayNameGeneration(ReplaceUnderscores.class)
-public class BridgePositionTest {
+class BridgePositionTest {
 
     @ParameterizedTest
     @NullAndEmptySource

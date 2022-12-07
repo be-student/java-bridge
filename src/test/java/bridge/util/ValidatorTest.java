@@ -15,7 +15,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("Validator 클래스")
 @DisplayNameGeneration(ReplaceUnderscores.class)
-public class ValidatorTest {
+class ValidatorTest {
 
     @ParameterizedTest
     @NullAndEmptySource

@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("CreateBridgeCommand 클래스")
 @DisplayNameGeneration(ReplaceUnderscores.class)
-public class CreateBridgeCommandTest {
+class CreateBridgeCommandTest {
 
     @ParameterizedTest
     @NullAndEmptySource

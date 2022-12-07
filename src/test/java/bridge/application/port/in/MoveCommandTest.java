@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("MoveCommand 클래스")
 @DisplayNameGeneration(ReplaceUnderscores.class)
-public class MoveCommandTest {
+class MoveCommandTest {
 
     @Test
     void 생성시_null_이_들어오면_예외() {
