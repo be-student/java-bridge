@@ -6,7 +6,7 @@ import java.util.List;
 public class History {
 
     private List<List<String>> history;
-    private int triedCount = 0;
+    private int triedCount = 1;
 
     public History() {
         init();
